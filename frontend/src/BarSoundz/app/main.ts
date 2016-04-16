@@ -15,7 +15,8 @@ import 'fastclick/fastclick';
 import {bootstrap} from 'angular2/platform/browser';
 import {ComponentRef, provide, enableProdMode} from 'angular2/core';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {HTTP_PROVIDERS, Http} from 'angular2/http';
+import {AuthConfig, AuthHttp, JwtHelper, tokenNotExpired} from  './services/angular2-jwt';
 
 import {BarSoundzAppComponent} from './app';
 import {appInjector} from './services/appInjector';
@@ -27,6 +28,15 @@ bootstrap(BarSoundzAppComponent, [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
+    provide(AuthConfig, {
+        useValue: new AuthConfig()
+    }),
+    provide(AuthHttp, {
+        useFactory: (http) => {
+            return new AuthHttp(new AuthConfig(), http);
+        },
+        deps: [Http]
+    })
 ]).then((appRef: ComponentRef) => {
     // Store a reference to the injector workaround for Dependency Injection in Router lifecycle hook
     appInjector(appRef.injector);
