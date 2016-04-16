@@ -1,5 +1,6 @@
 # Sample application for various “Cross-Platform HTML5 – in Action!” workshops
 if this is visible on the pi the crontab works
+the facebook usb hub looks like a vibrator
 ## Setup
 * Download and install the platform SDKs and/or emulators for the platform you want to develop for (this might take quite a while… so do this first!)
   * [XCode](https://developer.apple.com/xcode/download/)
