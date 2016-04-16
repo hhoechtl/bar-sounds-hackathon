@@ -1,0 +1,10 @@
+<bars-header></bars-header>
+
+<h1>Hello</h1>
+
+<button (click)="displayMap()">Show map</button>
+<button (click)="hideMap()">Hide map</button>
+
+<bars-list *ngIf="!showMap"></bars-list>
+
+<bars-map *ngIf="showMap"></bars-map>
