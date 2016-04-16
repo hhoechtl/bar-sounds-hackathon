@@ -20,7 +20,6 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {BarSoundzAppComponent} from './app';
 import {TokenService} from './services/tokenService';
 import {appInjector} from './services/appInjector';
-import {LogService} from './services/logService';
 import 'rxjs/Rx';
 
 enableProdMode();
@@ -29,7 +28,6 @@ bootstrap(BarSoundzAppComponent, [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
-    provide(LogService, { useClass: LogService }),
     TokenService,
 ]).then((appRef: ComponentRef) => {
     // Store a reference to the injector workaround for Dependency Injection in Router lifecycle hook

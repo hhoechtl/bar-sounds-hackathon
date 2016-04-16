@@ -9,8 +9,6 @@ import {GamesComponent} from './components/games/games';
 import {NotificationsComponent} from './components/notifications/notifications';
 import {APP_SERVICES} from './services/all';
 import {RadiusSearchComponent} from './components/radiusSearch/radiusSearch';
-import {LogService} from './services/logService';
-import {LogLevel} from './models/logLevel';
 import {SignalRService} from './services/signalrService';
 import {LoginService} from './services/loginService';
 import {NotificationService} from './services/notificationService';
@@ -35,9 +33,7 @@ export class BarSoundzAppComponent implements AfterViewInit {
                 private _loginService: LoginService,
                 private _notificationService: NotificationService,
                 private _nativeIntegrationService: NativeIntegrationService,
-                private _uiNotificationService: UiNotificationService,
-                private _logService: LogService) {
-        _logService.maximumLogLevel = LogLevel.Verbose;
+                private _uiNotificationService: UiNotificationService) {
         _uiNotificationService.subscribeToNotifications();
         _nativeIntegrationService.init();
     }

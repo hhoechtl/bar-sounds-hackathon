@@ -5,7 +5,6 @@ import {NeedsAuthentication} from '../../decorators/needsAuthentication';
 import {LocateItComponent} from '../locateIt/locateIt';
 import {PictureItComponent} from '../pictureIt/pictureIt';
 import {Game} from '../../models/game';
-import {LogService} from '../../services/logService';
 import {GamesService} from '../../services/gamesService';
 import {NotificationService} from '../../services/notificationService';
 import {SignalRService} from '../../services/signalrService';
@@ -33,8 +32,7 @@ export class GameDetailsComponent implements OnInit {
     public model: Game = new Game();
     public originalModel: Game = new Game();
 
-    constructor(private _logService: LogService,
-                private _gameService: GamesService,
+    constructor(private _gameService: GamesService,
                 private _router: Router,
                 private _routeParams: RouteParams,
                 private _notificationService: NotificationService,
@@ -61,7 +59,6 @@ export class GameDetailsComponent implements OnInit {
                     if (this._needsReset) this.reset();
                 },
                 (error) => {
-                    this._logService.logError('Could not find game. Error was: ' + error);
                     this._notificationService.notifyError('Could not load game data.');
                 }
             );

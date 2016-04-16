@@ -5,7 +5,6 @@ import {Observable} from 'rxjs/Observable';
 
 import {TokenService} from './tokenService';
 import {AppConfiguration} from '../appConfig';
-import {LogService} from './logService';
 import {TokenData} from '../models/tokenData';
 import {SignalRService} from './signalrService';
 
@@ -22,7 +21,6 @@ export class LoginService {
     }
 
     constructor(private _config: AppConfiguration,
-                private _logService: LogService,
                 private _http: Http,
                 private _router: Router,
                 private _tokenService: TokenService,
@@ -37,8 +35,6 @@ export class LoginService {
      * Logout the current user (remove token and navigate to unprotected route)
      */
     public logout(routeToLogin: boolean = true): void {
-        this._logService.logDebug('LoginService.logout called');
-
         this._signalRService.stop();
         this._lastLoginUnsuccessful = false;
         this._tokenService.token = null;
@@ -80,12 +76,10 @@ export class LoginService {
     }
 
     handleError(error: TokenData) {
-        this._logService.logDebug('LoginService encountered an error: ' + error);
         this._lastLoginUnsuccessful = true;
     }
 
     saveToken(token: string): void {
-        this._logService.logVerbose('LoginService.saveToken: Saving token ' + token);
         this._lastLoginUnsuccessful = false;
         this._tokenService.token = token;
     }

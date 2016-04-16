@@ -1,7 +1,6 @@
 import {Injectable, EventEmitter} from 'angular2/core';
 
 import {AppConfiguration} from '../appConfig';
-import {LogService} from './logService';
 import {TokenService} from './tokenService';
 
 // jQuery Ahoi
@@ -16,8 +15,7 @@ export class SignalRService {
     public someoneJoinedAGame: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private _configuration: AppConfiguration,
-                private _tokenService: TokenService,
-                private _logService: LogService) {
+                private _tokenService: TokenService) {
         this._hubConnection = $.hubConnection;
     }
 

@@ -1,8 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 
-import {LogService} from './logService';
-
 const tokenKey: string = 'Authentication::Token';
 const usernameKey: string = 'Authentication::Username';
 const expiryKey: string = 'Authentication::TokenExpiration';
@@ -11,7 +9,7 @@ const expiryKey: string = 'Authentication::TokenExpiration';
 export class TokenService {
     private _authenticated: boolean;
 
-    constructor(private _logService: LogService) {
+    constructor() {
         var token = this.token;
         
         if ((typeof token !== 'undefined') && (token !== null))
@@ -20,14 +18,11 @@ export class TokenService {
 
     public get token(): string {
         let token = localStorage.getItem(tokenKey);
-        this._logService.logVerbose('TokenService: Retrieved token: ' + token);
 
         return token;
     }
 
     public set token(token: string) {
-        this._logService.logVerbose('TokenService: Setting token: ' + token);
-
         if (token === null) {
             localStorage.removeItem(tokenKey);
             this.username = null;
