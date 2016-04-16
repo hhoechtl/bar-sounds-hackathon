@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 /*!
  *   AdminLTE v2.3.0
  *   Author: Almsaeed Studio
@@ -409,7 +410,7 @@ a:focus {
   }
 }
 /*
- * Component: SidebarComponent
+ * Component: Sidebar
  * ------------------
  */
 .main-sidebar,
@@ -577,7 +578,7 @@ a:focus {
   width: auto;
 }
 /*
- * Component: SidebarComponent Mini
+ * Component: Sidebar Mini
  */
 @media (min-width: 768px) {
   .sidebar-mini.sidebar-collapse .content-wrapper,
@@ -923,6 +924,12 @@ a:focus {
 .dropdown-menu > .divider {
   background-color: #eee;
 }
+
+.div-margin {
+  margin-left: 10%;
+}
+
+
 .navbar-nav > .notifications-menu > .dropdown-menu,
 .navbar-nav > .messages-menu > .dropdown-menu,
 .navbar-nav > .tasks-menu > .dropdown-menu {
@@ -1472,6 +1479,10 @@ a:focus {
 .small-box p {
   font-size: 15px;
 }
+
+
+
+
 .small-box p > small {
   display: block;
   color: #f9f9f9;
