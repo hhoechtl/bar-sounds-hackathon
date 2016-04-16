@@ -7,14 +7,32 @@ var sockio = require("socket.io");
 var http = require("http");
 
 var app = require("koa")();
-var router = require("koa-router")();
+var routerUnauthenticated = require("koa-router")();
+var jwt = require('koa-jwt');
+
+var jwtCheck = jwt({
+  secret: new Buffer('AEj8CLM548f_NfQd_ZBao6Vnl8zKHJpUU7EfT3qha6q8WGhrRnk9sdeY7XTFdUif', 'base64'),
+  audience: 'p2ZqSpl4T9FKXXFwXsLJ4YeejPxtaS75'
+});
 
 app.use(require("koa-bodyparser")());
 app.use(require("koa-static")(`${__dirname}/public`));
-app.use(router.routes());
 
-router.post("/api/messages/create", async function() {
+routerUnauthenticated.get("/api/messages", async function() {
   var conn = await r.connect(config.dbConfig);
+  this.body = await r.table("messages")
+                     .orderBy({index: r.desc("time")})
+                     .limit(100).orderBy("time")
+                     .run(conn);
+  conn.close();
+});
+
+app.use(routerUnauthenticated.routes());
+app.use(jwt);
+
+var routerAuthenticated = require("koa-router")();
+routerAuthenticated.post('/api/track/create', async function() {
+      var conn = await r.connect(config.dbConfig);
   this.body = await r.table("messages").insert({
     user: this.request.body.user,
     text: this.request.body.text,
@@ -23,14 +41,6 @@ router.post("/api/messages/create", async function() {
   conn.close();
 });
 
-router.get("/api/messages", async function() {
-  var conn = await r.connect(config.dbConfig);
-  this.body = await r.table("messages")
-                     .orderBy({index: r.desc("time")})
-                     .limit(100).orderBy("time")
-                     .run(conn);
-  conn.close();
-});
 
 var server = http.createServer(app.callback());
 var io = sockio(server);

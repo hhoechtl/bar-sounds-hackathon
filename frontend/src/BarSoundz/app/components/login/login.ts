@@ -1,41 +1,47 @@
 import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
 
-import {LoginService} from '../../services/loginService';
-import {NotificationService} from '../../services/notificationService';
-import {SignalRService} from '../../services/signalrService';
+import {AuthHttp, AuthConfig, tokenNotExpired, JwtHelper} from 'angular2-jwt';
+
+
+declare var Auth0Lock;
 
 @Component({
     templateUrl: 'app/components/login/login.html'
 })
 export class LoginComponent {
-    private _userName: string;
-    private _password: string;
-
-    public _hasError: boolean = false;
     
-    constructor(private _router: Router,
-                private _loginService: LoginService,
-                private _notificationService: NotificationService,
-                private _signalRService: SignalRService) {
+    lock = new Auth0Lock('p2ZqSpl4T9FKXXFwXsLJ4YeejPxtaS75', '1drop.eu.auth0.com');
+    
+    constructor(private _router: Router) {
     }
 
-    public doLogin(): void {
-        this._loginService.login(this._userName, this._password)
-            .subscribe(
-                () => {
-                    this._signalRService.start();
-                    this.setError(false);
-                    this._router.navigate(['Dashboard'])
-                },
-                () => {
-                    this.setError(true);
-                    this._notificationService.notifyError('Login was unsuccessful.');
-                }
-            );
+    public login(): void {
+        
+        var hash = this.lock.parseHash();
+        if (hash) {
+            if (hash.error) {
+                console.log('An error occured during login', hash.error);
+            } else {
+                this.lock.getProfile(hash.id_token, function(err, profile) {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    localStorage.setItem('profile', JSON.stringify(profile));
+                    localStorage.setItem('id_token', hash.id_token);
+                    this._router.navigate(['Dashboard']);
+                });
+            }
+        }
     }
-
-    setError(value: boolean) {
-        this._hasError = value;
+    
+    public logout(): void {
+        localStorage.removeItem('profile');
+        localStorage.removeItem('id_token');
+    }
+    
+    public loggedIn() {
+        return tokenNotExpired;
     }
 }

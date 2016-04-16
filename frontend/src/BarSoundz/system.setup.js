@@ -3,6 +3,9 @@ System.config({
         app: {
             format: 'register',
             defaultExtension: 'js'
+        },
+        "/angular2-jwt": {
+          "defaultExtension": "js"
         }
     },
     map: {
@@ -17,7 +20,8 @@ System.config({
         'pNotify/pnotify-adapter': 'scripts/bundles/pnotify-adapter.js',
         'signalr/signalr': 'scripts/bundles/signalr.js',
         'leaflet/leaflet': 'scripts/bundles/leaflet-src.js',
-        'fastclick/fastclick': 'scripts/bundles/fastclick.js'
+        'fastclick/fastclick': 'scripts/bundles/fastclick.js',
+        "angular2-jwt": "scripts/bundles/angular2-jwt/angular2-jwt.js"
     }
 });
 
