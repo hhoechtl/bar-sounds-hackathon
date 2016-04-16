@@ -1,6 +1,16 @@
 import {Injectable} from 'angular2/core';
 
-import {GeoLocation} from '../models/geoLocation';
+export class GeoLocation {
+    latitude: number;
+    longitude: number;
+    zoom: number;
+    
+    constructor(latitude: number, longitude: number, zoom: number) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.zoom = zoom;
+    }
+}
 
 @Injectable()
 export class GeolocationService {

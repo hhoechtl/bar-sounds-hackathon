@@ -2,17 +2,16 @@ import {Component, AfterViewInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 
 import {LoginComponent} from './components/login/login';
-import {DashboardComponent} from './components/dashboard/dashboard';
-import {SidebarComponent} from './components/sidebar/sidebar';
+import {BarsComponent} from './components/bars/bars';
+import {BarDetailComponent} from './components/barDetail/barDetail';
+import {RecordTrackComponent} from './components/recordTrack/recordTrack';
+import {EnterTrackComponent} from './components/enterTrack/enterTrack';
 import {HeaderComponent} from './components/header/header';
-import {GamesComponent} from './components/games/games';
-import {NotificationsComponent} from './components/notifications/notifications';
+import {ProfileComponent} from './components/profile/profile';
+import {LeaderBoardComponent} from './components/leaderBoard/leaderBoard';
+
+import {SidebarComponent} from './components/sidebar/sidebar';
 import {APP_SERVICES} from './services/all';
-import {RadiusSearchComponent} from './components/radiusSearch/radiusSearch';
-import {SignalRService} from './services/signalrService';
-import {LoginService} from './services/loginService';
-import {NotificationService} from './services/notificationService';
-import {UiNotificationService} from './services/uiNotificationService';
 import {NativeIntegrationService} from "./services/nativeIntegrationService";
 
 @Component({
@@ -22,34 +21,27 @@ import {NativeIntegrationService} from "./services/nativeIntegrationService";
     templateUrl: 'app/app.html'
 })
 @RouteConfig([
-    { path: '/', component: DashboardComponent, name: 'Dashboard', useAsDefault: true },
-    { path: '/login', component: LoginComponent, name: 'Login' },
-    { path: '/notifications', component: NotificationsComponent, name: 'Notifications' },
-    { path: '/games/...', component: GamesComponent, name: 'Games', data: { displayName: 'Games' } },
-    { path: '/radiusSearch', component: RadiusSearchComponent, name: 'RadiusSearch' }
+        { path: '/', component: BarsComponent, name: 'Bars', useAsDefault: true, data: {showMap: false} },
+    { path: '/map', component: BarsComponent, name: 'Bars Map', data: {showMap: true}},
+        { path: '/login', component: LoginComponent, name: 'Login' },
+        { path: '/profile', component: ProfileComponent, name: 'Profile' },
+    { path: '/leaderBoard', component: LeaderBoardComponent, name: 'LeaderBoard' },
+    { path: '/bar/:id', component: BarDetailComponent, name: 'BarDetail'},
+    { path: '/bar/:id/record', component: RecordTrackComponent, name: 'RecordTrack'},
+    { path: '/bar/:id/enter', component: EnterTrackComponent, name: 'EnterTrack'}
+
 ])
 export class BarSoundzAppComponent implements AfterViewInit {
-    constructor(private _signalRService: SignalRService,
-                private _loginService: LoginService,
-                private _notificationService: NotificationService,
-                private _nativeIntegrationService: NativeIntegrationService,
-                private _uiNotificationService: UiNotificationService) {
-        _uiNotificationService.subscribeToNotifications();
-        _nativeIntegrationService.init();
-    }
+    constructor(
+                private _nativeIntegrationService: NativeIntegrationService
+                ) {
+                            _nativeIntegrationService.init();
+                }
 
     ngAfterViewInit(): any {
         if (window.initAdminLTE) {
             window.initAdminLTE();
         }
-
-        if (this._loginService.isAuthenticated) {
-            this._signalRService.start();
-        }
-
-        this._signalRService.someoneJoinedAGame.subscribe(message => {
-            this._notificationService.notifyInformation(message);
-        });
     }
 }
 
