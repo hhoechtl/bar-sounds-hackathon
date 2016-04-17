@@ -3,7 +3,9 @@ import {RouteData, RouteParams} from 'angular2/router';
 import {BarsHeaderComponent} from './barsHeader';
 import {BarsListComponent} from './barsList';
 import {BarsMapComponent} from './barsMap';
-
+import {Location} from '../../models/location';
+import {SearchBarService} from '../../services/searchBarService';
+import {GeoLocation, GeolocationService} from '../../services/geolocationService';
 
 
 @Component({
@@ -13,8 +15,10 @@ import {BarsMapComponent} from './barsMap';
 })
 export class BarsComponent {
     showMap = false;
+    bars: Location[];
+    searchString: string;
     
-    constructor(params: RouteParams, data: RouteData) {
+    constructor(params: RouteParams, data: RouteData, _geolocationService: GeolocationService, _searchBarService: SearchBarService) {
         this.showMap = data.get('showMap');
     }
     
@@ -25,5 +29,19 @@ export class BarsComponent {
     
     public hideMap(): void {
         this.showMap = false;
+    }
+
+    ngOnInit() {
+        this.getBars();
+    }
+
+    public getBars(): void {
+        this._geolocationService.locate().subscribe(
+            (geolocation) => this._searchBarService.get(geolocation.latitude, geolocation.longitude, this.searchString).subscribe(
+                (bars) => this.bars = bars,
+                (err) => console.log('Error getting bars')
+            ),
+            (err) => console.log('Error getting location')
+        );
     }
 }

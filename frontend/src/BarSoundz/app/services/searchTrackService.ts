@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import {AppConfiguration} from '../appConfig';
-import {Track} from '../models/track';
+import {Song} from '../models/song';
 
 @Injectable()
 export class SearchTrackService {
@@ -15,9 +15,8 @@ export class SearchTrackService {
         return `${this._config.apiEndpoint}${appendix}`;
     }
 
-    public get(title: string, artist: string): Observable<Track[]> {
+    public get(title: string, artist: string): Observable<Song[]> {
         const url = this.buildUrl('/search/track/' + title + '/' + artist);
-        return this._http.get(url).map(response => <Track[]>response.json());
+        return this._http.get(url).map(response => <Song[]>response.json());
     }
-
 }

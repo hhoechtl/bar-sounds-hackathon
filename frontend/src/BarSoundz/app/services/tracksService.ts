@@ -15,9 +15,9 @@ export class TracksService {
         return `${this._config.apiEndpoint}${appendix}`;
     }
 
-    public get(): Observable<LeaderBoard> {
+    public get(id: string): Observable<Track[]> {
         const url = this.buildUrl('/:id/tracks');
-        return this._http.get(url).map(response => <LeaderBoard>response.json());
+        return this._http.get(url).map(response => <Track[]>response.json());
     }
 
 }
