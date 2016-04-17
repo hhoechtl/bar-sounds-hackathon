@@ -17,15 +17,16 @@ export class BarsComponent implements OnInit {
     showMap = false;
     bars: LocationResult[];
     searchString: string;
-    
+    myLocation: GeoLocation;
+
     constructor(params: RouteParams, data: RouteData, private _geolocationService: GeolocationService, private _searchBarService: SearchBarService) {
         this.showMap = data.get('showMap');
     }
-    
+
     public displayMap(): void {
         this.showMap = true;
     }
-    
+
     public hideMap(): void {
         this.showMap = false;
     }
@@ -36,10 +37,13 @@ export class BarsComponent implements OnInit {
 
     public getBars(): void {
         this._geolocationService.locate().then(
-            (geolocation: GeoLocation) => this._searchBarService.get(geolocation.latitude, geolocation.longitude, this.searchString).subscribe(
-                (bars) => this.bars = bars,
-                (err) => console.log('Error getting bars')
-            ),
+            (geolocation: GeoLocation) => {
+                this.myLocation = geolocation;
+                this._searchBarService.get(geolocation.latitude, geolocation.longitude, this.searchString).subscribe(
+                    (bars) => this.bars = bars,
+                    (err) => console.log('Error getting bars')
+                );
+            },
             (err) => console.log('Error getting location')
         );
     }

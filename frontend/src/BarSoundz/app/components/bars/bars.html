@@ -16,4 +16,4 @@
 
 <bars-list *ngIf="!showMap" [bars]="bars"></bars-list>
 
-<bars-map *ngIf="showMap" [bars]="bars"></bars-map>
+<bars-map *ngIf="showMap" [location]="myLocation" [bars]="bars"></bars-map>
