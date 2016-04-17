@@ -1,4 +1,8 @@
-<i class="fa fa-spinner fa-pulse fa-3x fa-fw text-center" *ngIf="bars.length == 0"></i>
+<div class="row" *ngIf="bars.length == 0">
+    <div class="col-sm-2 col-sm-offset-5">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw text-center"></i>
+    </div>
+</div>
 
 <div class="table-responsive">
     <div class="table" *ngFor="#bar of bars">
