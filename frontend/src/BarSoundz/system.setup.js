@@ -18,8 +18,7 @@ System.config({
         'jquery/jquery.slimscroll': 'scripts/bundles/jquery.slimscroll.js',
         'pnotify': 'scripts/bundles/pnotify.custom.js',
         'pNotify/pnotify-adapter': 'scripts/bundles/pnotify-adapter.js',
-        'signalr/signalr': 'scripts/bundles/signalr.js',
-        'leaflet/leaflet': 'scripts/bundles/leaflet-src.js',
+        'auth0': 'scripts/bundles/auth0-lock.js',
         'fastclick/fastclick': 'scripts/bundles/fastclick.js'
     }
 });

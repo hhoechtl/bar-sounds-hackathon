@@ -7,6 +7,7 @@ module.exports = {
         files: {
             injectables: [
                 './dist/www/scripts/es6-shim.min.js',
+                './dist/www/scripts/auth0-lock.js',
                 './dist/www/scripts/shims_for_IE.js',
                 './dist/www/scripts/vendor.min.js',
                 './dist/www/scripts/angular2.min.js',
@@ -45,8 +46,7 @@ module.exports = {
                 './src/BarSoundz/vendor/admin-lte/css/AdminLTE.css',
                 './src/BarSoundz/vendor/admin-lte/css/skins/_all-skins.css',
                 './src/BarSoundz/vendor/font-awesome/css/font-awesome.css',
-                './src/BarSoundz/vendor/pNotify/pnotify.custom.css',
-                './src/BarSoundz/vendor/leaflet-js/leaflet.css'
+                './src/BarSoundz/vendor/pNotify/pnotify.custom.css'
             ],
             vendorFonts: [
                 './src/BarSoundz/vendor/font-awesome/fonts/*.*',
@@ -54,7 +54,8 @@ module.exports = {
             ],
             shim: [
                 './node_modules/es6-shim/es6-shim.min.js',
-                './node_modules/angular2/es6/dev/src/testing/shims_for_IE.js'
+                './node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
+                './src/BarSoundz/vendor/auth0/auth0-lock.js'
             ],
             vendorJs: [
                 './src/BarSoundz/vendor/hammerjs/hammer.js',
@@ -63,11 +64,9 @@ module.exports = {
                 './src/BarSoundz/vendor/jquery/jquery.slimscroll.js',
                 './src/BarSoundz/vendor/pNotify/pnotify-adapter.js',
                 './src/BarSoundz/vendor/pNotify/pnotify.custom.js',
-                './src/BarSoundz/vendor/signalr/signalr.js',
                 './src/BarSoundz/vendor/bootstrap/js/bootstrap.js',
                 './src/BarSoundz/vendor/fastclick/fastclick.js',
-                './src/BarSoundz/vendor/admin-lte/js/app.js',
-                './src/BarSoundz/vendor/leaflet-js/leaflet-src.js'],
+                './src/BarSoundz/vendor/admin-lte/js/app.js'],
             angular2: [
                 './node_modules/systemjs/dist/system-polyfills.js',
                 './node_modules/angular2/bundles/angular2-polyfills.js',

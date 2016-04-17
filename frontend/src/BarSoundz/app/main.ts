@@ -6,8 +6,6 @@ import 'hammerjs/hammer';
 import 'jquery/jquery.hammer';
 import 'jquery/jquery.slimscroll';
 import 'pNotify/pnotify-adapter';
-import 'signalr/signalr';
-import 'leaflet/leaflet';
 import 'fastclick/fastclick';
 
 ///<reference path="../../../node_modules/angular2/typings/browser.d.ts"/>
