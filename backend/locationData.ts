@@ -48,7 +48,7 @@ export class LocationData {
                 "artist": '',
                 "title": ''
             },
-            "imageUrl": "https://openclipart.org/image/300px/svg_to_png/213150/Oma-ganz.png"
+            "imageUrl": "https://pixabay.com/static/uploads/photo/2015/07/02/10/27/bar-828768_960_720.jpg"
         },
         {
             "id": "4",
@@ -208,7 +208,7 @@ export class LocationData {
                 "artist": '',
                 "title": ''
             },
-            "imageUrl": "https://openclipart.org/image/800px/svg_to_png/201979/house-purple250px.png"
+            "imageUrl": "https://pixabay.com/static/uploads/photo/2013/11/12/01/29/bar-209148_960_720.jpg"
         },
         {
             "id": "14",
@@ -256,7 +256,7 @@ export class LocationData {
                 "artist": '',
                 "title": ''
             },
-            "imageUrl": "https://openclipart.org/image/800px/svg_to_png/8366/Chrisdesign-comic-TV.png"
+            "imageUrl": "http://www.kult.de/files/smthumbnaildata/locationlogo_top/2/2/0/5/0/7/3/kultimage.jpg"
         }
     ];
 }
