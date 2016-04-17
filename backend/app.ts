@@ -69,13 +69,6 @@ routerUnauthenticated.post("/search/bar", async function () {
     }
 });
 
-/*
- * TODO: make this work
-routerUnauthenticated.post('/search/track', async function (next){
-    this.body = await gracenoteApi.searchTrack(this.request.body.artist, this.request.body.album, this.request.body.title);
-});
-*/
-
 app.use(routerUnauthenticated.routes());
 
 /**
@@ -84,7 +77,7 @@ app.use(routerUnauthenticated.routes());
 //app.use(jwtCheck);
 
 var routerAuthenticated = require("koa-router")();
-routerAuthenticated.post('/enter/:barId', async function () {
+routerAuthenticated.post('/enter/:barId/:userId', async function () {
     if (this.request.body.title && this.request.body.artist) {
         var conn = await r.connect(AppConfig.dbConfig);
         var currentTrack = {
@@ -96,11 +89,21 @@ routerAuthenticated.post('/enter/:barId', async function () {
         };
 
         await r.table('locations').get(this.params.barId).update({ lastTrack: currentTrack }).run(conn);
+        await r.table('users')
+                .get(this.params.userId)
+                .update({
+                    tagCounter: r.row('tagCounter').add(1).default(0),
+                    firstTagCounter: r.row('firstTagCounter').add(1).default(0)
+                }).run(conn)
         this.body = await r.table("tracks").insert(currentTrack).run(conn);
         conn.close();
     } else {
         this.body = {};
     }
+});
+
+routerAuthenticated.post('/search/track', async function (next){
+    this.body = await gracenoteApi.searchTrack(this.request.body.artist, this.request.body.album, this.request.body.title);
 });
 
 routerAuthenticated.post('/profile', async function () {
