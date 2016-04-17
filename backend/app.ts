@@ -24,7 +24,7 @@ var jwtCheck = jwt({
 });
 
 app.use(require("koa-bodyparser")());
-app.use(require("koa-static")(`${__dirname}/public`));
+app.use(require("koa-static")(`${__dirname}/../frontend/dist/www`));
 
 routerUnauthenticated.get("/tracks/:barId", async function () {
     var conn = await r.connect(AppConfig.dbConfig);
@@ -75,13 +75,16 @@ var routerAuthenticated = require("koa-router")();
 routerAuthenticated.post('/enter/:barId', async function () {
     if (this.request.body.title && this.request.body.artist) {
         var conn = await r.connect(AppConfig.dbConfig);
-        this.body = await r.table("tracks").insert({
+        var currentTrack = {
             artist: this.request.body.artist,
             title: this.request.body.title,
             location: this.params.barId,
             album: this.request.body.album ? this.request.body.album : '',
             begin: r.now(),
-        }).run(conn);
+        };
+        
+        await r.table('locations').get(this.params.barId).update({lastTrack: currentTrack}).run(conn);
+        this.body = await r.table("tracks").insert(currentTrack).run(conn);
         conn.close();
     } else {
         this.body = {};

@@ -9,6 +9,8 @@ import {MobileCameraService} from './mobileCameraService';
 import {PlatformInformationService} from './platformInformationService';
 import {NativeIntegrationService} from "./nativeIntegrationService";
 import {ProfileService} from "./profileService";
+import {TracksService} from './tracksService';
+import {SearchBarService} from './searchBarService';
 import {AuthHttp} from './angular2-jwt';
 
 declare var window;
@@ -21,5 +23,7 @@ export var APP_SERVICES = [
     GeolocationService,
     provide(CameraService, { useClass: window.cordova ? MobileCameraService : DesktopCameraService }),
     ProfileService,
+    TracksService,
+    SearchBarService,
     AuthHttp
 ];

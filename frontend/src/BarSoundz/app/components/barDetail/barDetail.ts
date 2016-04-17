@@ -11,12 +11,12 @@ import {TracksService} from '../../services/tracksService';
     templateUrl: 'app/components/barDetail/barDetail.html'
 })
 export class BarDetailComponent implements OnInit {
-    barId: number;
+    barId: string;
     tracks: Track[];
     
     
-    constructor(params: RouteParams, _tracksService: TracksService) {
-        this.barId = +params.get('id');
+    constructor(params: RouteParams, private _tracksService: TracksService) {
+        this.barId = params.get('id');
     }
 
     ngOnInit() {

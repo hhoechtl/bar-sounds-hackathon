@@ -1,15 +1,15 @@
 <div class="table-responsive">
-    <div class="table">
+    <div class="table" *ngFor="#bar of bars">
         <div align="left" class="panel">
-            <img style="object-fit: contain" class="img-fluid pull-left" src="http://placekitten.com/90/90" alt="kitten" />
+            <img style="object-fit: contain" class="img-fluid pull-left" [src]="bar.doc.imageUrl" alt="" />
             <p class="">
-                Filmbühne
+                {{bar.doc.name}}
             </p>
             <p class="">
-                Entfernung: <b>500m</b>
+                Entfernung: <b>{{bar.dist| round}}m</b>
             </p>
             <p>
-                Super Musik
+                {{bar.doc.lastTrack.artist}} - {{bar.doc.lastTrack.title}} 
             </p>
         </div>
     </div>

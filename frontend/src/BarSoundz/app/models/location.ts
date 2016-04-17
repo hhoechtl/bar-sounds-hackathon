@@ -10,6 +10,7 @@ export interface ILocation {
      country: string;
      imageUrl: string;
      location?: any;
+     lastTrack?: any;
 } 
 
 export class Location implements ILocation {
@@ -28,4 +29,9 @@ export class Location implements ILocation {
         this.longitude = longitude;
         this.name = name;
     }
+}
+
+export class LocationResult {
+    public dist: number;
+    public doc: Location;
 }

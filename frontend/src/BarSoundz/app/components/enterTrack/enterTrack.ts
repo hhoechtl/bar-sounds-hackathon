@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {Song} from '../../models/song';
 import {SearchTrackService} from '../../services/searchTrackService';
@@ -7,13 +7,13 @@ import {SearchTrackService} from '../../services/searchTrackService';
     selector: 'enter-track',
     templateUrl: 'app/components/enterTrack/enterTrack.html'
 })
-export class EnterTrackComponent implements OnInit {
+export class EnterTrackComponent {
     barId: number;
     songs: Song[];
     title: string;
     artist: string;
 
-    constructor(params: RouteParams, _searchTrackService: SearchTrackService) {
+    constructor(params: RouteParams, private _searchTrackService: SearchTrackService) {
         this.barId = +params.get('id');
     }
 

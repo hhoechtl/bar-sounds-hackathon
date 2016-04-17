@@ -14,6 +14,6 @@
     </div>
 </nav>
 
-<bars-list *ngIf="!showMap"></bars-list>
+<bars-list *ngIf="!showMap" [bars]="bars"></bars-list>
 
-<bars-map *ngIf="showMap"></bars-map>
+<bars-map *ngIf="showMap" [bars]="bars"></bars-map>

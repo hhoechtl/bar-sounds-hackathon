@@ -11,6 +11,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93133",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/217933/disko.png"
         },
         {
@@ -22,6 +27,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93053",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/174392/rACMAN.png"
         },
         {
@@ -33,6 +43,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93053",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/300px/svg_to_png/213150/Oma-ganz.png"
         },
         {
@@ -44,6 +59,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+             "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/244966/banana-coloured.png"
         },
         {
@@ -55,6 +75,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93059",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/245001/Maus2-coloured.png"
         },
         {
@@ -66,6 +91,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/28878/Rfc1394-Danger-13-200-Volts-Alt-1.png"
         },
         {
@@ -77,6 +107,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+             "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/300px/svg_to_png/168413/1329741984.png"
         },
         {
@@ -88,6 +123,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/45925/Sticky-Note-04-Purple.png"
         },
         {
@@ -99,6 +139,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/220623/Brief-coloured.png"
         },
         {
@@ -110,6 +155,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/201729/homoeopathie-pd.png"
         },
         {
@@ -121,6 +171,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/173424/Angry-running-man.png"
         },
         {
@@ -132,6 +187,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/177332/gras2.png"
         },
         {
@@ -143,6 +203,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93053",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/201979/house-purple250px.png"
         },
         {
@@ -154,6 +219,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/201980/house-red250px.png"
         },
         {
@@ -165,6 +235,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/34207/scala-doppia.png"
         },
         {
@@ -176,6 +251,11 @@ export class LocationData {
             "city": "Regensburg",
             "zip": "93047",
             "country": "Germany",
+            "lastTrack": {
+                "album": '',
+                "artist": '',
+                "title": ''
+            },
             "imageUrl": "https://openclipart.org/image/800px/svg_to_png/8366/Chrisdesign-comic-TV.png"
         }
     ];

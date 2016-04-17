@@ -1,8 +1,8 @@
 import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import {AppConfiguration} from '../appConfig';
-import {Location} from '../models/location';
+import {LocationResult} from '../models/location';
 
 @Injectable()
 export class SearchBarService {
@@ -15,9 +15,18 @@ export class SearchBarService {
         return `${this._config.apiEndpoint}${appendix}`;
     }
 
-    public get(latitude: number, longitude: number, searchString: string): Observable<Location[]> {
-        const url = this.buildUrl('/search/bar/' + latitude + '/' + longitude + '/' + searchString);
-        return this._http.get(url).map(response => <Location[]>response.json());
+    public get(latitude: number, longitude: number, searchString: string): Observable<LocationResult[]> {
+        const url = this.buildUrl('search/bar');
+        var headers = new Headers();
+         headers.append('Content-Type', 'application/json');
+
+        return this._http.post(url, JSON.stringify({
+            latitude: latitude,
+            longitude: longitude,
+            searchString: searchString
+        }), {
+            headers: headers
+        }).map(response => <LocationResult[]>response.json());
     }
 
 }

@@ -1,3 +1,3 @@
 export class AppConfiguration {
-    public apiEndpoint: string = 'https://boardzapi.azurewebsites.net/';
+    public apiEndpoint: string = 'http://localhost:8000/';
 }

@@ -9,7 +9,7 @@ import {LeaderBoardService} from '../../services/leaderBoardService';
 export class LeaderBoardComponent implements OnInit {
     leaders: User[];
 
-    constructor(_leaderBoardService: LeaderBoardService) {
+    constructor(private _leaderBoardService: LeaderBoardService) {
     }
 
     ngOnInit() {
