@@ -12,9 +12,9 @@ export interface IAppConfig {
 
 
 export default class AppConfig {
-    public serverPort = 8000;
-    public dbConfig = {
-        host: 'localhost',
+    public static serverPort = 8000;
+    public static dbConfig = {
+        host: '192.168.99.100',
         db: 'barsoundz',
         port: 28015
     };

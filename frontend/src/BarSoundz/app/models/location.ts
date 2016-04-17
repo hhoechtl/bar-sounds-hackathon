@@ -1,6 +1,19 @@
 
-export class Location {
-    public id: string = null;
+export interface ILocation {
+     id: string;
+     latitude: number;
+     longitude: number;
+     name: string;
+     address: string;
+     city: string;
+     zip: string;
+     country: string;
+     imageUrl: string;
+     location?: any;
+} 
+
+export class Location implements ILocation {
+    public id: string;
     public latitude: number;
     public longitude: number;
     public name: string;

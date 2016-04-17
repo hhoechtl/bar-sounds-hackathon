@@ -1,5 +1,5 @@
 
-import Location from './location';
+import {Location} from './location';
 
 export class Track {
     public id: string = null;
