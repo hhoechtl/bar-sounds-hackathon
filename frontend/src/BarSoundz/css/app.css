@@ -53,14 +53,14 @@ body,
 }
 
 .media-left.bar-list-image {
-    width: 120px;
-    min-width: 120px;
+    width: 125px;
+    min-width: 125px;
     text-align: center;
 }
 
 .media-left.bar-list-image img {
-    max-height: 80px;
-    max-width: 80px;
+    max-height: 90px;
+    max-width: 900px;
 }
 
 .sebm-google-map-container {
