@@ -15,7 +15,7 @@ import {GeoLocation, GeolocationService} from '../../services/geolocationService
 })
 export class BarsComponent implements OnInit {
     showMap = false;
-    bars: LocationResult[];
+    bars: LocationResult[] = [];
     searchString: string;
     myLocation: GeoLocation;
 
