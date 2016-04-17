@@ -1,16 +1,20 @@
 <div class="table-responsive">
     <div class="table" *ngFor="#bar of bars">
-        <div align="left" class="panel">
-            <img style="object-fit: contain" class="img-fluid pull-left" [src]="bar.doc.imageUrl" alt="" />
-            <a [routerLink]="['BarDetail', {id: bar.doc.id}]" class="">
-                {{bar.doc.name}}
-            </a>
-            <p class="">
-                Entfernung: <b>{{bar.dist| round}}m</b>
-            </p>
-            <p>
-                {{bar.doc.lastTrack.artist}} - {{bar.doc.lastTrack.title}} 
-            </p>
+        <div class="panel media">
+            <div class="media-left bar-list-image">
+                <img [src]="bar.doc.imageUrl" alt="" />
+            </div>
+            <div class="media-body">
+                <a [routerLink]="['BarDetail', {id: bar.doc.id}]" class="">
+                    <h4 class="media-heading">{{bar.doc.name}}</h4>
+                </a>
+                <p class="">
+                    Entfernung: <b>{{bar.dist| round}}m</b>
+                </p>
+                <p>
+                    {{bar.doc.lastTrack.artist}} - {{bar.doc.lastTrack.title}}
+                </p>
+            </div>
         </div>
     </div>
 </div>

@@ -51,3 +51,14 @@ body,
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
+
+.media-left.bar-list-image {
+    width: 120px;
+    min-width: 120px;
+    text-align: center;
+}
+
+.media-left.bar-list-image img {
+    max-height: 80px;
+    max-width: 80px;
+}
