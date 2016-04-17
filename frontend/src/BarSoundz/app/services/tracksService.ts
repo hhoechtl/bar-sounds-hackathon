@@ -16,7 +16,7 @@ export class TracksService {
     }
 
     public get(id: string): Observable<Track[]> {
-        const url = this.buildUrl('/:id/tracks');
+        const url = this.buildUrl('tracks/' + id);
         return this._http.get(url).map(response => <Track[]>response.json());
     }
 

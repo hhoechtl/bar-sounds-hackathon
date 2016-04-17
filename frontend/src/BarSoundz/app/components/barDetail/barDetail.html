@@ -1,5 +1,11 @@
-<h1>Bar Detail</h1>
+<img [src]="bar.imageUrl" />
 
-<span>{{barId}}</span>
+<h1>{{bar.name}}</h1>
 
 <add-track-bar></add-track-bar>
+
+<div class="track" *ngFor="#track of tracks">
+    
+    <strong>{{track.artist}}</strong> - {{track.title}}
+    
+</div>

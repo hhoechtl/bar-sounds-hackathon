@@ -2,9 +2,9 @@
     <div class="table" *ngFor="#bar of bars">
         <div align="left" class="panel">
             <img style="object-fit: contain" class="img-fluid pull-left" [src]="bar.doc.imageUrl" alt="" />
-            <p class="">
+            <a [routerLink]="['BarDetail', {id: bar.doc.id}]" class="">
                 {{bar.doc.name}}
-            </p>
+            </a>
             <p class="">
                 Entfernung: <b>{{bar.dist| round}}m</b>
             </p>

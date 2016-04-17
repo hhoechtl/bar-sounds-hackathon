@@ -21,22 +21,22 @@ import {NativeIntegrationService} from "./services/nativeIntegrationService";
     templateUrl: 'app/app.html'
 })
 @RouteConfig([
-        { path: '/', component: BarsComponent, name: 'Bars', useAsDefault: true, data: {showMap: false} },
-    { path: '/map', component: BarsComponent, name: 'Bars Map', data: {showMap: true}},
-        { path: '/login', component: LoginComponent, name: 'Login' },
-        { path: '/profile', component: ProfileComponent, name: 'Profile' },
+    { path: '/', component: BarsComponent, name: 'Bars', useAsDefault: true, data: { showMap: false } },
+    { path: '/map', component: BarsComponent, name: 'Bars Map', data: { showMap: true } },
+    { path: '/login', component: LoginComponent, name: 'Login' },
+    { path: '/profile', component: ProfileComponent, name: 'Profile' },
     { path: '/leaderBoard', component: LeaderBoardComponent, name: 'LeaderBoard' },
-    { path: '/bar/:id', component: BarDetailComponent, name: 'BarDetail'},
-    { path: '/bar/:id/record', component: RecordTrackComponent, name: 'RecordTrack'},
-    { path: '/bar/:id/enter', component: EnterTrackComponent, name: 'EnterTrack'}
+    { path: '/bar/:id', component: BarDetailComponent, name: 'BarDetail' },
+    { path: '/bar/:id/record', component: RecordTrackComponent, name: 'RecordTrack' },
+    { path: '/bar/:id/enter', component: EnterTrackComponent, name: 'EnterTrack' }
 
 ])
 export class BarSoundzAppComponent implements AfterViewInit {
     constructor(
-                private _nativeIntegrationService: NativeIntegrationService
-                ) {
-                            _nativeIntegrationService.init();
-                }
+        private _nativeIntegrationService: NativeIntegrationService
+    ) {
+        _nativeIntegrationService.init();
+    }
 
     ngAfterViewInit(): any {
         if (window.initAdminLTE) {

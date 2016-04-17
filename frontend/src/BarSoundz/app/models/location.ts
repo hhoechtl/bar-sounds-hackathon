@@ -24,10 +24,7 @@ export class Location implements ILocation {
     public country: string;
     public imageUrl: string;
 
-    constructor(latitude:number, longitude:number, name:string) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.name = name;
+    constructor() {
     }
 }
 

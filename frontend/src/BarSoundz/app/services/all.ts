@@ -10,6 +10,7 @@ import {PlatformInformationService} from './platformInformationService';
 import {NativeIntegrationService} from "./nativeIntegrationService";
 import {ProfileService} from "./profileService";
 import {TracksService} from './tracksService';
+import {BarService} from './barService';
 import {SearchBarService} from './searchBarService';
 import {AuthHttp} from './angular2-jwt';
 
@@ -25,5 +26,6 @@ export var APP_SERVICES = [
     ProfileService,
     TracksService,
     SearchBarService,
+    BarService,
     AuthHttp
 ];

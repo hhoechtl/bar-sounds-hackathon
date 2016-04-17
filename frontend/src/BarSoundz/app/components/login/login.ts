@@ -17,7 +17,6 @@ export class LoginComponent {
     }
 
     public login(): void {
-        console.log('clicked login');
         this.lock.show((err: string, profile: string, id_token: string) => {
 
             if (err) {

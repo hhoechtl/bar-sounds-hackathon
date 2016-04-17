@@ -30,8 +30,17 @@ routerUnauthenticated.get("/tracks/:barId", async function () {
     var conn = await r.connect(AppConfig.dbConfig);
     this.body = await r.table("tracks")
         .filter({ location: this.params.barId })
-        .orderBy({ index: r.desc("begin") })
+        //.orderBy({ index: r.desc("begin") })
         .limit(50)
+        .run(conn);
+    conn.close();
+});
+
+
+routerUnauthenticated.get("/bar/:barId", async function () {
+    var conn = await r.connect(AppConfig.dbConfig);
+    this.body = await r.table("locations")
+        .get(this.params.barId)
         .run(conn);
     conn.close();
 });
