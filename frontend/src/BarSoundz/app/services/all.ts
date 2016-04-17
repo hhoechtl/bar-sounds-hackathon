@@ -8,11 +8,12 @@ import {DesktopCameraService} from './desktopCameraService';
 import {MobileCameraService} from './mobileCameraService';
 import {PlatformInformationService} from './platformInformationService';
 import {NativeIntegrationService} from "./nativeIntegrationService";
+import {LeaderBoardService} from "./leaderBoardService";
 import {ProfileService} from "./profileService";
 import {TracksService} from './tracksService';
 import {BarService} from './barService';
 import {SearchBarService} from './searchBarService';
-import {AuthHttp} from './angular2-jwt';
+import {AuthHttp, JwtHelper} from './angular2-jwt';
 
 declare var window;
 
@@ -27,5 +28,7 @@ export var APP_SERVICES = [
     TracksService,
     SearchBarService,
     BarService,
+    JwtHelper,
+    LeaderBoardService,
     AuthHttp
 ];

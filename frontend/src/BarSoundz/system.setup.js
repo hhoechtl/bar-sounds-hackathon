@@ -3,9 +3,6 @@ System.config({
         app: {
             format: 'register',
             defaultExtension: 'js'
-        },
-        "/angular2-jwt": {
-          "defaultExtension": "js"
         }
     },
     map: {

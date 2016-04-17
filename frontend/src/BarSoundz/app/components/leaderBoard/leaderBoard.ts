@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {User} from '../../models/user';
+import {IUser} from '../../models/user';
 import {LeaderBoardService} from '../../services/leaderBoardService';
 
 @Component({
@@ -7,7 +7,7 @@ import {LeaderBoardService} from '../../services/leaderBoardService';
     templateUrl: 'app/components/leaderBoard/leaderBoard.html'
 })
 export class LeaderBoardComponent implements OnInit {
-    leaders: User[];
+    leaders: IUser[];
 
     constructor(private _leaderBoardService: LeaderBoardService) {
     }
