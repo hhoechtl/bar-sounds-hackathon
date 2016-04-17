@@ -1,11 +1,14 @@
-<img [src]="bar.imageUrl" />
+<div class="box">
+    <div class="box-header text-center">
+        <img [src]="bar.imageUrl" />
 
-<h1>{{bar.name}}</h1>
+        <h1>{{bar.name}}</h1>
+    </div>
+    <div class="box-body">
+        <add-track-bar></add-track-bar>
 
-<add-track-bar></add-track-bar>
-
-<div class="track" *ngFor="#track of tracks">
-    
-    <strong>{{track.artist}}</strong> - {{track.title}}
-    
+        <div class="track" *ngFor="#track of tracks">
+            <strong>{{track.artist}}</strong> - {{track.title}}
+        </div>
+    </div>
 </div>
