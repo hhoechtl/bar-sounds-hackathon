@@ -15,3 +15,11 @@ export class Track {
         this.begin = begin;
     }
 }
+
+export interface ITrackDto {
+    title: string;
+    artist: string;
+    album?: string;
+    location?: string;
+    begin?: any;
+}

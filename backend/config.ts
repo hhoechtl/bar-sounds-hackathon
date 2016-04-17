@@ -5,9 +5,15 @@ export interface IRethinkConfig {
     port: number;
 }
 
+export interface IGraceNoteConfig {
+    clientId: string;
+    clientTag: string;
+}
+
 export interface IAppConfig {
     dbConfig: IRethinkConfig;
     serverPort: number;
+    graceNote: IGraceNoteConfig;
 }
 
 
@@ -18,4 +24,8 @@ export default class AppConfig {
         db: 'barsoundz',
         port: 28015
     };
+    public static graceNote = {
+      clientId: '1856440932',
+      clientTag: 'D9B2C858CF333BE4C924D82209CC3FA8'  
+    } 
 };

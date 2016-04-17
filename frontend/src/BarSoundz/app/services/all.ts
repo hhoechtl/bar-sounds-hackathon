@@ -12,6 +12,7 @@ import {LeaderBoardService} from "./leaderBoardService";
 import {ProfileService} from "./profileService";
 import {TracksService} from './tracksService';
 import {BarService} from './barService';
+import {EnterTrackService} from './enterTrackService';
 import {SearchBarService} from './searchBarService';
 import {AuthHttp, JwtHelper} from './angular2-jwt';
 
@@ -29,6 +30,7 @@ export var APP_SERVICES = [
     SearchBarService,
     BarService,
     JwtHelper,
+    EnterTrackService,
     LeaderBoardService,
     AuthHttp
 ];
