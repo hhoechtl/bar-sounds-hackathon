@@ -1,13 +1,55 @@
-<h1>LeaderBoard</h1>
-
-
-<div class="" *ngFor="#leader of leaders">
-    
-    <img [src]="leader.picture" />
-    
-    <strong>{{leader.given_name}} {{leader.family_name}}</strong>
-    
-    <strong>First Tags: {{leader.firstTagCounter}}</strong>
-    <strong>Tags: {{leader.tagCounter}}</strong>
-    
+<div class="container">
+    <div class="row">
+        <div class="col-m-9">
+            <div class="table-responsive">
+                <table summary="" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Platz</th>
+                            <th>Vorname</th>
+                            <th>Nachname</th>
+                            <th>Tags</th>
+                            <th>First Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="#leader of leaders">
+                            <td>1</td>
+                            <td>{{leader.first_name}}</td>
+                            <td>{{leader.given_name}}</td>
+                            <td> <strong>Tags: {{leader.tagCounter}}</strong>
+                            </td>
+                            <td> <strong>First Tags: {{leader.firstTagCounter}}</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--end of .table-responsive-->
+        </div>
+    </div>
 </div>
+
+
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    table caption {
+        padding: .5em 0;
+    }
+
+    @media screen and (max-width: 767px) {
+        table caption {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .p {
+        text-align: center;
+        padding-top: 140px;
+        font-size: 14px;
+    }
+</style>
