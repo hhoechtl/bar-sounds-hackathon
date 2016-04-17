@@ -62,3 +62,7 @@ body,
     max-height: 80px;
     max-width: 80px;
 }
+
+.sebm-google-map-container {
+    height: 300px;
+}

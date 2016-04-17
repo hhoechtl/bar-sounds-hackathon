@@ -17,6 +17,7 @@ import {ComponentRef, provide, enableProdMode} from 'angular2/core';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS, Http} from 'angular2/http';
 import {AuthConfig, AuthHttp, JwtHelper, tokenNotExpired} from  './services/angular2-jwt';
+import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 
 import {BarSoundzAppComponent} from './app';
 import {appInjector} from './services/appInjector';
@@ -36,7 +37,8 @@ bootstrap(BarSoundzAppComponent, [
             return new AuthHttp(new AuthConfig(), http);
         },
         deps: [Http]
-    })
+    }),
+    ANGULAR2_GOOGLE_MAPS_PROVIDERS
 ]).then((appRef: ComponentRef) => {
     // Store a reference to the injector workaround for Dependency Injection in Router lifecycle hook
     appInjector(appRef.injector);

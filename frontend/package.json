@@ -22,6 +22,7 @@
   "homepage": "https://github.com/hhoechtl/bar-sounds-hackathon",
   "devDependencies": {
     "angular2": "2.0.0-beta.12",
+    "angular2-google-maps": "^0.9.0",
     "angular2-jwt": "^0.1.9",
     "bootstrap": "^3.3.6",
     "del": "^2.0.2",

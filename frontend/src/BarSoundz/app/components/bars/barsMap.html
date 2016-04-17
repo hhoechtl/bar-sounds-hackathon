@@ -1,1 +1,6 @@
 List of Maps
+
+<sebm-google-map [latitude]="geolocation.latitude" [longitude]="geolocation.longitude">
+    <sebm-google-map-marker *ngFor="#bar of bars" [latitude]="bar.doc.latitude" [longitude]="bar.doc.longitude" [label]="bar.doc.name">
+    </sebm-google-map-marker>
+</sebm-google-map>

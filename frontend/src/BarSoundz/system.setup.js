@@ -21,7 +21,7 @@ System.config({
         'signalr/signalr': 'scripts/bundles/signalr.js',
         'leaflet/leaflet': 'scripts/bundles/leaflet-src.js',
         'fastclick/fastclick': 'scripts/bundles/fastclick.js',
-        "angular2-jwt": "scripts/bundles/angular2-jwt/angular2-jwt.js"
+        'angular2-google-maps': 'scripts/bundles/angular2-google-maps.js'
     }
 });
 
