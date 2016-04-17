@@ -20,6 +20,4 @@ export class ProfileComponent implements OnInit {
             (err) => console.log('Error getting profile')
         );
     }
-    
-    
 }
