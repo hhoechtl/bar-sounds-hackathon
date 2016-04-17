@@ -1,1 +1,13 @@
 <h1>LeaderBoard</h1>
+
+
+<div class="" *ngFor="#leader of leaders">
+    
+    <img [src]="leader.picture" />
+    
+    <strong>{{leader.given_name}} {{leader.family_name}}</strong>
+    
+    <strong>First Tags: {{leader.firstTagCounter}}</strong>
+    <strong>Tags: {{leader.tagCounter}}</strong>
+    
+</div>

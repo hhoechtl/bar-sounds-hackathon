@@ -48,9 +48,9 @@ routerUnauthenticated.get("/bar/:barId", async function () {
 routerUnauthenticated.get('/leaderBoard', async function () {
     var conn = await r.connect(AppConfig.dbConfig);
     this.body = await r.table("users")
-        .filter({ location: this.params.barId })
         .orderBy({ index: r.desc("tagCounter") })
         .limit(100)
+        .coerceTo('array')
         .run(conn);
     conn.close();
 });
@@ -59,7 +59,10 @@ routerUnauthenticated.post("/search/bar", async function () {
     if (this.request.body.latitude && this.request.body.longitude) {
         var currentLocation = r.point(this.request.body.latitude, this.request.body.longitude);
         var conn = await r.connect(AppConfig.dbConfig);
-        this.body = await r.table('locations').getNearest(currentLocation, { index: 'location', maxResults: 50 }).run(conn);
+        this.body = await r.table('locations')
+        .getNearest(currentLocation, { index: 'location', maxResults: 50 })
+        .coerceTo('array')
+        .run(conn);
         conn.close();
     } else {
         this.body = [];
@@ -91,13 +94,29 @@ routerAuthenticated.post('/enter/:barId', async function () {
             album: this.request.body.album ? this.request.body.album : '',
             begin: r.now(),
         };
-        
-        await r.table('locations').get(this.params.barId).update({lastTrack: currentTrack}).run(conn);
+
+        await r.table('locations').get(this.params.barId).update({ lastTrack: currentTrack }).run(conn);
         this.body = await r.table("tracks").insert(currentTrack).run(conn);
         conn.close();
     } else {
         this.body = {};
     }
+});
+
+routerAuthenticated.post('/profile', async function () {
+    var conn = await r.connect(AppConfig.dbConfig);
+    var profile = this.request.body;
+    var actionSummary = await r.table('users').insert(profile, { conflict: 'update' }).run(conn);
+    // if we see the user for the first time, we initialize his counters
+    if (actionSummary.inserted > 0) {
+        profile.tagCounter = 0;
+        profile.firstTagCounter = 0;
+        await r.table('users').update(profile).run(conn);
+    } else {
+        // Profile has probably been updated, so return the new version
+        profile = await r.table('users').get(profile.global_client_id).run(conn);
+    }
+    this.body = profile;
 });
 
 app.use(routerAuthenticated.routes());
@@ -134,7 +153,7 @@ var io = sockio(server);
         // Ensure users table exists
         await r.tableList().contains('users').do(
             function (tableExists) {
-                return r.branch(tableExists, { created: 0 }, r.tableCreate('users'));
+                return r.branch(tableExists, { created: 0 }, r.tableCreate('users', { primaryKey: 'global_client_id' }));
             }
         ).run(conn);
         // Ensure geospatial index exists on locations table field location

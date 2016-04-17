@@ -23,7 +23,6 @@ export class BarsComponent implements OnInit {
     }
     
     public displayMap(): void {
-        console.log('show map');
         this.showMap = true;
     }
     

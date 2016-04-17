@@ -1,11 +1,14 @@
 import {Component, OnInit} from 'angular2/core';
 import {ProfileService} from '../../services/profileService';
 import {User} from '../../models/user';
+import {CanActivate} from 'angular2/router';
+import {JwtHelper} from '../../services/angular2-jwt';
 
 @Component({
     selector: 'profile',
     templateUrl: 'app/components/profile/profile.html'
 })
+@CanActivate(() => JwtHelper.tokenNotExpired())
 export class ProfileComponent implements OnInit {
     
     profile: User;
@@ -15,9 +18,6 @@ export class ProfileComponent implements OnInit {
     }
     
     ngOnInit() {
-        this._profileService.get().subscribe(
-            (profile) => this.profile = profile,
-            (err) => console.log('Error getting profile')
-        );
+        this.profile = JSON.parse(localStorage.getItem('profile'));
     }
 }
